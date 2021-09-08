@@ -1,7 +1,7 @@
 {
   "name": "cli-tools",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./lib/tools.js",
   "license": "MIT",
   "bin": "./bin/tools.ts",
   "devDependencies": {
@@ -14,7 +14,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.2",
+    "husky": "^7.0.0",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   },
@@ -28,6 +28,7 @@
     "cli": "./bin/tools.js",
     "lint": "eslint --ext .js,.ts lib",
     "lint:fix": "eslint --ext .js,.ts lib --fix",
-    "prettier": "prettier --write lib/"
+    "prettier": "prettier --write lib/",
+    "prepare": "husky install"
   }
 }

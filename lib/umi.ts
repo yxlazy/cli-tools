@@ -18,20 +18,11 @@ const run = (command: string, params: string | string[]): Promise<void> => {
   });
 };
 
-const writeFileSync = (filename: string, data: string) =>
-  fs.writeFileSync(filename, data);
+const writeFileSync = (filename: string, data: string) => fs.writeFileSync(filename, data);
 
-const installAndCreateCommitlintConfig = async (
-  command: string,
-): Promise<void> => {
-  await run(command, [
-    'add',
-    '@commitlint/cli',
-    '@commitlint/config-conventional',
-    '--dev',
-  ]);
-  const data =
-    "module.exports = {extends: ['@commitlint/config-conventional']}";
+const installAndCreateCommitlintConfig = async (command: string): Promise<void> => {
+  await run(command, ['add', '@commitlint/cli', '@commitlint/config-conventional', '--dev']);
+  const data = "module.exports = {extends: ['@commitlint/config-conventional']}";
   writeFileSync('commitlint.config.js', data);
 };
 
@@ -45,9 +36,10 @@ const installAndCreateEslintConfig = async (command: string): Promise<void> => {
     extends:  [
       'plugin:react/recommended',  // Uses the recommended rules from @eslint-plugin-react
       'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from @typescript-eslint/eslint-plugin
+      'plugin:prettier/recommended',
     ],
     parserOptions:  {
-      ecmaVersion:  ESNEXT,  // Allows for the parsing of modern ECMAScript features
+      ecmaVersion:  2020,  // Allows for the parsing of modern ECMAScript features
       sourceType:  'module',  // Allows for the use of imports
       ecmaFeatures:  {
         jsx:  true,  // Allows for the parsing of JSX
@@ -56,6 +48,7 @@ const installAndCreateEslintConfig = async (command: string): Promise<void> => {
     rules:  {
       // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+      'prettier/prettier': ['error'],
     },
     settings:  {
       react:  {
@@ -81,15 +74,10 @@ const installAndCreateHuskyConfig = async (command: string) => {
   //husky 需要针对.git文件
   await run('git', 'init');
   await run(command, ['husky', 'install']);
-  await run(command, [
-    'husky',
-    'add',
-    '.husky/commit-msg',
-    "'yarn commitlint --edit $1'",
-  ]);
+  await run(command, ['husky', 'add', '.husky/commit-msg', "'yarn commitlint --edit $1'"]);
 };
 
-const umi = async (option: Record<string, unknown>) => {
+const umi = async (option: Record<string, unknown>): Promise<void> => {
   if (!option.umi) return;
   const umi = option.umi as string;
   const command = 'yarn';
