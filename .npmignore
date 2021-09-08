@@ -1,0 +1,5 @@
+/node_modules
+.husky
+.github
+/lib
+.DS_Store

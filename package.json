@@ -1,9 +1,28 @@
 {
   "name": "cli-tools",
-  "version": "1.0.0",
-  "main": "./lib/tools.js",
+  "version": "0.0.1",
+  "main": "./bin/tools.js",
   "license": "MIT",
-  "bin": "./lib/tools.js",
+  "bin": "./bin/tools.js",
+  "keywords": [
+    "tools",
+    "cli"
+  ],
+  "homepage": "https://github.com/yanxiaolazy/cli-tools",
+  "repository": {
+    "url": "https://github.com/yanxiaolazy/cli-tools"
+  },
+  "author": {
+    "name": "yanxiaolazy"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "cli": "./bin/tools.js",
+    "lint": "eslint --ext .js,.ts lib",
+    "lint:fix": "eslint --ext .js,.ts lib --fix",
+    "prettier": "prettier --write lib/",
+    "prepare": "husky install"
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
@@ -22,13 +41,5 @@
     "chalk": "^4.1.2",
     "commander": "^8.1.0",
     "fs-extra": "^10.0.0"
-  },
-  "scripts": {
-    "build": "npx tsc",
-    "cli": "./bin/tools.js",
-    "lint": "eslint --ext .js,.ts lib",
-    "lint:fix": "eslint --ext .js,.ts lib --fix",
-    "prettier": "prettier --write lib/",
-    "prepare": "husky install"
   }
 }
