@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./lib/tools.js",
   "license": "MIT",
-  "bin": "./bin/tools.ts",
+  "bin": "./lib/tools.js",
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
