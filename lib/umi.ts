@@ -49,6 +49,13 @@ const installAndCreateEslintConfig = async (command: string): Promise<void> => {
       // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
       'prettier/prettier': ['error'],
+      'camelcase': ['error'],  // 强制使用骆驼拼写法命名约定
+      'consistent-return': ['error'], // 要求 return 语句要么总是指定返回的值，要么不指定
+      'eqeqeq': [1], // 要求使用 === 和 !==
+      'no-empty-function': ['error'], // 禁止出现空函数
+      'no-nested-ternary': ['error'], // 禁用嵌套的三元表达式
+      'no-bitwise': ['error'], // 禁用按位运算符
+      'react/react-in-jsx-scope': [0]
     },
     settings:  {
       react:  {
@@ -64,6 +71,8 @@ const installAndCreateEslintConfig = async (command: string): Promise<void> => {
     'eslint-plugin-react',
     '@typescript-eslint/eslint-plugin',
     'eslint-plugin-react-hooks',
+    'eslint-config-prettier',
+    'eslint-plugin-prettier',
     '--dev',
   ]);
   writeFileSync('.eslintrc.js', data);
