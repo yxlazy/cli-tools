@@ -1,9 +1,11 @@
 {
-  "name": "cli-tools",
+  "name": "@tools/cli",
   "version": "0.0.1",
-  "main": "./bin/tools.js",
+  "main": "./lib/tools.ts",
   "license": "MIT",
-  "bin": "./bin/tools.js",
+  "bin": {
+    "clis": "./bin/lib/tools.js"
+  },
   "keywords": [
     "tools",
     "cli"
@@ -17,7 +19,7 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "cli": "./bin/tools.js",
+    "cli": "./bin/lib/tools.js",
     "lint": "eslint --ext .js,.ts lib",
     "lint:fix": "eslint --ext .js,.ts lib --fix",
     "prettier": "prettier --write lib/",
