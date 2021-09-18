@@ -83,7 +83,7 @@ const installAndCreateHuskyConfig = async (command: string) => {
   //husky 需要针对.git文件
   await run('git', 'init');
   await run(command, ['husky', 'install']);
-  await run(command, ['husky', 'add', '.husky/commit-msg', "'yarn commitlint --edit $1'"]);
+  await run(command, ['husky', 'add', '.husky/commit-msg', 'yarn commitlint --edit $1']);
 };
 
 const umi = async (option: Record<string, unknown>): Promise<void> => {
